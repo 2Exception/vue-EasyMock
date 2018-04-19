@@ -60,6 +60,10 @@ let router = new Router({
       path: '/users',
       name: 'users',
       component: Users
+    },
+    {
+      path: '*',
+      component: Page404
     }
   ]
 });
