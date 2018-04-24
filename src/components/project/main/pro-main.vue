@@ -15,13 +15,13 @@
     </div>
     <div class="control">
       <button>
-        <i class="iconfont icon-lianjie"></i>
+        <i class="iconfont icon-lianjie" title="复制项目地址"></i>
       </button>
       <button>
-        <i class="iconfont icon-wendang"></i>
+        <i class="iconfont icon-wendang" title="克隆项目"></i>
       </button>
       <button>
-        <i class="iconfont icon-shanchu"></i>
+        <i class="iconfont icon-shanchu" title="删除项目"></i>
       </button>
     </div>
   </div>

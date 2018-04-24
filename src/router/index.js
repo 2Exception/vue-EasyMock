@@ -10,15 +10,24 @@ import Dataview from '@/components/dataview/dataview'
 import Doc from '@/components/doc/doc'
 import Login from '@/components/login/login'
 import Users from '@/components/users/users-info'
+import Page404 from '@/components/page404'
 
 Vue.use(Router);
 
-let router = new Router({
+const router = new Router({
   mode: 'history',
+  scrollBehavior(to,from,position){
+    if(position){
+      return position;
+    }else{
+      return {x: 0,y :0};
+    }
+  },
   routes: [
     {
       path:'/',
       component: Person,
+      alias: '/index',
     },
     {
       path: '/Project',
@@ -57,15 +66,48 @@ let router = new Router({
       component: Login
     },
     {
-      path: '/users',
+      path: '/users/:group?/:userId?',
       name: 'users',
       component: Users
     },
     {
-      path: '*',
+      path: '/page404',
+      name: 'page404',
       component: Page404
+    },
+    {
+      path: '*',
+      redirect(to){
+        if(to.path === '/login1') {
+          return '/login'
+        }else if(to.path === '/projcet'){
+          return '/project'
+        }else {
+          return '/page404'
+        }
+      }
     }
+
+
   ]
 });
+
+router.beforeEach((to,from,next)=>{
+  // 获取 localStorage
+  let info = router.app.$local.fetch('easy-mock');
+
+  if(to.path !== '/login') {
+
+    if(info.login){
+      next();
+    }else {
+      next('/login');
+    }
+
+  }else {
+    next();
+  }
+
+})
 
 export default router;

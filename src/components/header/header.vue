@@ -1,19 +1,20 @@
 <template>
   <div class="header">
     <div class="nav">
-      <router-link tag="h1" to="/">
+      <router-link tag="h1" to="/index">
         <img src="@/assets/img/easy-mock.png" alt="">
       </router-link>
       <input type="text" auto-complete="off" class="search" placeholder="Search Easy Mock"></input>
-      <el-menu :default-active="activeIndex2" class="el-menu-demo"
-               mode="horizontal"  @select="handleSelect" background-color="#545c64"
-               text-color="#fff" active-text-color="#ffd04b" :router="true">
-        <el-submenu index="project">
+      <el-menu class="el-menu-demo"
+               mode="horizontal" background-color="#545c64"
+               text-color="#fff" active-text-color="#ffd04b" :router="true"
+               @select="handleSelect" >
+        <el-submenu index="/project">
           <template slot="title">
             <span class="iconfont icon-xiangmuguanli"></span>
             我的项目
           </template>
-          <el-menu-item index="person">
+          <el-menu-item index="/person">
             <span class="iconfont icon-yonghu"></span>
             个人项目
           </el-menu-item>
@@ -22,11 +23,11 @@
             团队项目
           </el-menu-item>
         </el-submenu>
-        <el-menu-item index="workbench">
+        <el-menu-item index="/workbench">
           <span class="iconfont icon-agent"></span>
           工作台
         </el-menu-item>
-        <el-menu-item index="dataview">
+        <el-menu-item index="/dataview">
           <template slot="title">
             <span class="iconfont icon-shuju"></span>
             数据
@@ -34,7 +35,7 @@
           <!--<el-menu-item index="3-1">数据中心</el-menu-item>
           <el-menu-item index="3-2">数据分析</el-menu-item>-->
         </el-menu-item>
-        <el-menu-item index="docs">
+        <el-menu-item index="/docs">
           <span class="iconfont icon-wendang"></span>
           文档
         </el-menu-item>
@@ -60,7 +61,7 @@
           <template slot="title">
             <img src="@/assets/img/headimg.png" alt="" class="head-img">
           </template>
-          <el-menu-item index="/users">
+          <el-menu-item :index="'/users/'+ userData.info.group+'/' +userData.id">
             <span class="iconfont icon-bianji"></span>
             编辑资料
           </el-menu-item>
@@ -69,6 +70,7 @@
             退出
           </el-menu-item>
         </el-submenu>
+        <el-button type="info" class="login" v-if="false">登录</el-button>
       </el-menu>
     </div>
   </div>
@@ -76,19 +78,18 @@
 
 <script>
   export default {
-    data() {
+    data(){
       return {
-        activeIndex: '1',
-        activeIndex2: '1'
-      };
-    },
-    created() {
-
+        userData: this.$store.state.userData,
+      }
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+      handleSelect(index){
+        if(index == '/login') {
+          this.$local.save('easy-mock',null);
+        }
       }
+
     }
   }
 </script>
@@ -147,6 +148,9 @@
     }
     .nav-li-last {
       float: right;
+    }
+    .login {
+      margin-top: 10px;
     }
   }
   .el-menu--horizontal {

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div :class="{progress : isActive}"></div>
     <my-header></my-header>
       <transition name="component-fade" mode="out-in">
         <router-view></router-view>
@@ -10,24 +11,51 @@
 <script>
   import Header from '@/components/header/header'
   export default {
-  name: 'App',
-  components: {
-    'my-header': Header
-  }
+    components: {
+    'my-header': Header,
+    },
+    data(){
+      return {
+        isActive: false
+      }
+    },
+    watch: {
+      $route(){
+        this.isActive = true;
+        setTimeout(()=>{
+          this.isActive = false;
+        },2000)
+      }
+    }
 
 }
 </script>
 
 <style lang="less">
-  #app{
-    margin-bottom: 20px;
-  }
   .component-fade-enter-active, .component-fade-leave-active {
     transition: opacity .5s linear;
   }
-  .component-fade-enter, .component-fade-leave-to
-    /* .component-fade-leave-active for below version 2.1.8 */ {
+  .component-fade-enter, .component-fade-leave-to {
     opacity: 0;
+  }
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #0A74DA;
+    animation: widthAdd 2s ease-in-out;
+    z-index: 9999;
+  }
+
+  @keyframes widthAdd {
+    0% {
+      width: 0%;
+    }
+
+    100% {
+      width: 100%;
+    }
   }
 
 </style>

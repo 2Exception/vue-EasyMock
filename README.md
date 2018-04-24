@@ -1,18 +1,21 @@
-# vue-EasyMock
-:book: vue全家桶制作的easy-mock PC端  仅个人项目实践
+# element-ui
 
-## use
+> A Vue.js project
 
-- 安装依赖
+## Build Setup
 
 ``` bash
+# install dependencies
 npm install
-```
 
-- 运行
-
-```bash
+# serve with hot reload at localhost:8080
 npm run dev
-```
-- TIPS: 该项目部分功能有待添加,后续会更新完善~,如果您有什么好的想法可以在[Issue](https://github.com/FSD001/vue-EasyMock/issues)中提出,不胜感谢!!
 
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
