@@ -44,15 +44,15 @@
             <span class="iconfont icon-egg"></span>
             彩蛋
           </template>
-          <el-menu-item index="5-1">
+          <el-menu-item index="">
             <span class="iconfont icon-lianjie"></span>
-            GitHub
+            <a href="https://github.com/FSD001/vue-EasyMock" target="_blank" class="link">Github</a>
           </el-menu-item>
-          <el-menu-item index="5-2">
+          <el-menu-item index="">
             <span class="iconfont icon-lianjie"></span>
             API生成工具
           </el-menu-item>
-          <el-menu-item index="5-3">
+          <el-menu-item index="">
             <span class="iconfont icon-lianjie"></span>
             Mock语法
           </el-menu-item>
@@ -98,12 +98,17 @@
   .header {
     background: rgb(84, 92, 100);
   }
+  .link {
+    color: #fff;
+    text-decoration: none;
+  }
   .nav {
     width: 1020px;
     margin: 0 auto;
     position: relative;
     padding-left: 300px;
     box-sizing: border-box;
+
     h1{
       position: absolute;
       left: 0;
