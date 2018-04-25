@@ -101,7 +101,13 @@ router.beforeEach((to,from,next)=>{
     if(info.login){
       next();
     }else {
-      next('/login');
+      router.push({
+        path: '/login',
+        query: {
+          redirect: to.path.slice(1)
+        }
+      });
+
     }
 
   }else {

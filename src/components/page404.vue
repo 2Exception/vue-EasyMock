@@ -1,14 +1,18 @@
 <template>
   <div class="container">
-    <h2>Error</h2>
-    <p>Looks like something broke!</p>
+    <canvas id="cvs"></canvas>
   </div>
 </template>
 
 <script>
+  import {danMu} from '@/lib/danmu.js'
   export default {
-    name: "page404"
+    name: "page404",
+    mounted(){
+      danMu();
+    }
   }
+
 </script>
 
 <style scoped lang="less">
@@ -21,6 +25,10 @@
     p {
       font-size: 16px;
       color: #666;
+    }
+
+    canvas {
+      border-radius: 20px;
     }
   }
 

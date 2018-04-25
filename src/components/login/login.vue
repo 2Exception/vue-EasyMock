@@ -19,29 +19,46 @@
 
       </form>
     </div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: "login",
+    beforeRouteEnter(to,from,next){
+      next(vm => {
+        let info = vm.$local.fetch('easy-mock')
+        console.log(vm);
+        if(info.login){
+          vm.$router.push('/');
+        }
+      })
+    },
     methods: {
       sendLogin(){
         let userName = this.$refs.userInput.value;
+        let redirect = this.$route.query.redirect;
 
         if(userName) {
           this.$local.save('easy-mock',{
             login: true,
             userName: userName
           })
-        }
 
-        if(userName) {
-          this.$router.push('/');
+          if(redirect) {
+            this.$router.push({
+              path: '/' + redirect
+            });
+          }else {
+            this.$router.push({
+              path: '/'
+            })
+          }
+
         }else {
-          alert('您还没输入用户名!请输入后再试!');
+          alert('请输入您的用户名!')
         }
-
       }
     }
   }
