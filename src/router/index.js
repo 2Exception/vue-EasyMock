@@ -2,15 +2,69 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // project module
-import Project from '@/components/project/project'
-import Person from '@/components/project/person'
-import Team from '@/components/project/team'
-import Workbench from '@/components/workbench/workbench'
-import Dataview from '@/components/dataview/dataview'
-import Doc from '@/components/doc/doc'
-import Login from '@/components/login/login'
-import Users from '@/components/users/users-info'
-import Page404 from '@/components/page404'
+// import Project from '@/components/project/project'
+// import Person from '@/components/project/person'
+// import Team from '@/components/project/team'
+// import Workbench from '@/components/workbench/workbench'
+// import Dataview from '@/components/dataview/dataview'
+// import Doc from '@/components/doc/doc'
+// import Login from '@/components/login/login'
+// import Users from '@/components/users/users-info'
+// import Page404 from '@/components/page404'
+
+let Project = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/project/project'))
+  })
+}
+
+let Person = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/project/person'))
+  })
+}
+
+let Team = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/project/team'))
+  })
+}
+
+let Workbench = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/workbench/workbench'))
+  })
+}
+
+let Dataview = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/dataview/dataview'))
+  })
+}
+
+let Doc = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/doc/doc'))
+  })
+}
+
+let Login = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/login/login'))
+  })
+}
+
+let Users = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/users/users-info'))
+  })
+}
+
+let Page404 = (resolve)=>{
+  return require.ensure([],()=>{
+    resolve(require('@/components/page404'))
+  })
+}
 
 Vue.use(Router);
 
